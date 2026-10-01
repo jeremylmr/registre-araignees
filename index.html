@@ -60,12 +60,28 @@
         <label for="emplacement">Emplacement</label>
         <input id="emplacement" type="text" placeholder="Ex. Fenêtre gauche" required>
       </div>
+      <div class="group">
+        <label for="observation">Observation</label>
+        <textarea id="observation" rows="5" placeholder="Ex. Bouge beaucoup le matin, change souvent de coin…"></textarea>
+      </div>
       <div id="editMessage" class="message"></div>
       <div class="modal-actions">
         <button type="button" class="light" data-close="editDialog">Annuler</button>
         <button class="primary">Enregistrer</button>
       </div>
     </form>
+  </dialog>
+
+  <dialog id="observationDialog">
+    <div class="modal">
+      <h2 id="observationTitle">Observations</h2>
+      <div class="detail-place" id="observationPlace"></div>
+      <div class="detail-label">Observation</div>
+      <div class="observation-text" id="observationText"></div>
+      <div class="modal-actions">
+        <button type="button" class="light" data-close="observationDialog">Fermer</button>
+      </div>
+    </div>
   </dialog>
 
   <dialog id="zoomDialog">
