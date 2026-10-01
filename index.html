@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Registre officiel des araignées</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header>
+    <div class="spider">🕷️</div>
+    <h1>Registre officiel des araignées</h1>
+    <p>Recensement totalement sérieux des occupantes non déclarées des locaux.</p>
+  </header>
+
+  <main>
+    <div class="toolbar">
+      <input id="search" class="search" type="search" placeholder="Rechercher un nom ou un emplacement…">
+      <button id="refreshBtn" class="light">Actualiser</button>
+      <button id="addBtn" class="primary hidden">+ Ajouter</button>
+      <button id="loginBtn" class="light">Connexion admin</button>
+      <button id="logoutBtn" class="light hidden">Déconnexion</button>
+      <span id="adminState" class="admin-state">Consultation publique</span>
+    </div>
+    <div id="gallery"><div class="empty">Chargement du registre…</div></div>
+  </main>
+
+  <footer>Service RH — Ressources Huit-pattes</footer>
+
+  <dialog id="loginDialog">
+    <form id="loginForm" class="modal">
+      <h2>Connexion admin</h2>
+      <p class="help">Entre ton email admin : un lien de connexion te sera envoyé.</p>
+      <div class="group">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="email" required>
+      </div>
+      <div id="loginMessage" class="message"></div>
+      <div class="modal-actions">
+        <button type="button" class="light" data-close="loginDialog">Fermer</button>
+        <button class="primary">Envoyer le lien</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="editDialog">
+    <form id="editForm" class="modal">
+      <h2 id="editTitle">Ajouter une araignée</h2>
+      <div class="group">
+        <label for="photo">Photo</label>
+        <input id="photo" type="file" accept="image/*">
+        <div id="preview" class="preview">Photo de la suspecte</div>
+      </div>
+      <div class="group">
+        <label for="nom">Nom</label>
+        <input id="nom" type="text" placeholder="Ex. Gertrude" required>
+      </div>
+      <div class="group">
+        <label for="emplacement">Emplacement</label>
+        <input id="emplacement" type="text" placeholder="Ex. Fenêtre gauche" required>
+      </div>
+      <div id="editMessage" class="message"></div>
+      <div class="modal-actions">
+        <button type="button" class="light" data-close="editDialog">Annuler</button>
+        <button class="primary">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="zoomDialog">
+    <img id="zoomImg" alt="">
+    <button class="light zoom-close" data-close="zoomDialog">Fermer</button>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
