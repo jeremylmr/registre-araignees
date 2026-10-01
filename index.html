@@ -31,15 +31,19 @@
   <dialog id="loginDialog">
     <form id="loginForm" class="modal">
       <h2>Connexion admin</h2>
-      <p class="help">Entre ton email admin : un lien de connexion te sera envoyé.</p>
+      <p class="help">Connecte-toi avec ton compte administrateur.</p>
       <div class="group">
         <label for="email">Email</label>
-        <input id="email" type="email" autocomplete="email" required>
+        <input id="email" type="email" autocomplete="username" required>
+      </div>
+      <div class="group">
+        <label for="password">Mot de passe</label>
+        <input id="password" type="password" autocomplete="current-password" required>
       </div>
       <div id="loginMessage" class="message"></div>
       <div class="modal-actions">
         <button type="button" class="light" data-close="loginDialog">Fermer</button>
-        <button class="primary">Envoyer le lien</button>
+        <button class="primary">Se connecter</button>
       </div>
     </form>
   </dialog>
