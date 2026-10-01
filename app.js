@@ -107,6 +107,11 @@ function render() {
 
     content.append(name, label, place);
 
+    const zone = document.createElement("div");
+    zone.className = "zone-badge";
+    zone.textContent = item.exterieur ? "Extérieur" : "Intérieur";
+    content.appendChild(zone);
+
     const observationBtn = document.createElement("button");
     observationBtn.className = "light observation-btn";
     observationBtn.textContent = "Voir les observations";
@@ -153,6 +158,7 @@ function openEdit(item = null) {
     currentPhotoPath = item.photo_path || null;
     $("#nom").value = item.nom;
     $("#emplacement").value = item.emplacement;
+    $("#exterieur").checked = !!item.exterieur;
     $("#observation").value = item.observation || "";
     $("#editTitle").textContent = "Modifier l’araignée";
 
@@ -171,6 +177,7 @@ function openEdit(item = null) {
 function openObservation(item) {
   $("#observationTitle").textContent = item.nom;
   $("#observationPlace").textContent = "📍 " + item.emplacement;
+  $("#observationZone").textContent = item.exterieur ? "Extérieur" : "Intérieur";
   $("#observationText").textContent =
     (item.observation || "").trim() || "Aucune observation pour le moment.";
   $("#observationDialog").showModal();
@@ -212,6 +219,7 @@ $("#editForm").addEventListener("submit", async (e) => {
     const payload = {
       nom: $("#nom").value.trim(),
       emplacement: $("#emplacement").value.trim(),
+      exterieur: $("#exterieur").checked,
       observation: $("#observation").value.trim() || null,
       photo_path: photoPath,
     };
