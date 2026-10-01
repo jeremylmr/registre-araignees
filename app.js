@@ -267,21 +267,21 @@ $("#loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   $("#loginMessage").textContent = "";
 
-  const { data, error } = await client.auth.signInWithOtp({
+  const { data, error } = await client.auth.signInWithPassword({
     email: $("#email").value.trim(),
-    options: {
-      emailRedirectTo: window.location.href.split("#")[0],
-      shouldCreateUser: false
-    }
+    password: $("#password").value
   });
 
   if (error) {
-    $("#loginMessage").textContent = "Connexion impossible : " + error.message;
+    $("#loginMessage").textContent = "Connexion impossible : email ou mot de passe incorrect.";
     return;
   }
 
-  $("#loginMessage").style.color = "#236b2d";
-  $("#loginMessage").textContent = "Lien envoyé. Ouvre ton email pour te connecter.";
+  session = data.session;
+  $("#loginDialog").close();
+  $("#loginForm").reset();
+  setAdminUI();
+  await load();
 });
 
 $("#loginBtn").onclick = () => {
