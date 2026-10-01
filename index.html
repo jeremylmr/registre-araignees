@@ -61,6 +61,12 @@
         <input id="emplacement" type="text" placeholder="Ex. Fenêtre gauche" required>
       </div>
       <div class="group">
+        <label class="check-row" for="exterieur">
+          <input id="exterieur" type="checkbox">
+          <span>Cette araignée est à l’extérieur</span>
+        </label>
+      </div>
+      <div class="group">
         <label for="observation">Observation</label>
         <textarea id="observation" rows="5" placeholder="Ex. Bouge beaucoup le matin, change souvent de coin…"></textarea>
       </div>
@@ -75,7 +81,10 @@
   <dialog id="observationDialog">
     <div class="modal">
       <h2 id="observationTitle">Observations</h2>
-      <div class="detail-place" id="observationPlace"></div>
+      <div class="detail-meta">
+        <div class="detail-place" id="observationPlace"></div>
+        <div class="detail-zone" id="observationZone"></div>
+      </div>
       <div class="detail-label">Observation</div>
       <div class="observation-text" id="observationText"></div>
       <div class="modal-actions">
