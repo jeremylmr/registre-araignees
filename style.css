@@ -27,3 +27,10 @@ dialog::backdrop{background:rgba(0,0,0,.45)}.modal{padding:24px}.modal h2{margin
 .detail-place{display:inline-block;background:#f7f5f1;border-radius:8px;padding:8px 10px;margin:-4px 0 18px;color:#555}
 .detail-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:#888;font-weight:700;margin-bottom:7px}
 .observation-text{white-space:pre-wrap;line-height:1.55;background:#f7f5f1;border-radius:10px;padding:14px;min-height:72px}
+
+.check-row{display:flex!important;align-items:center;gap:10px;cursor:pointer;background:#f7f5f1;padding:11px 12px;border-radius:9px}
+.check-row input{width:auto!important;margin:0;accent-color:#222}
+.zone-badge{display:inline-block;margin-top:9px;padding:6px 9px;border-radius:999px;font-size:12px;font-weight:700;background:#f1eee8;color:#555}
+.detail-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:-4px 0 18px}
+.detail-meta .detail-place{margin:0}
+.detail-zone{display:inline-block;background:#ece8df;border-radius:999px;padding:8px 10px;color:#555;font-size:13px;font-weight:700}
