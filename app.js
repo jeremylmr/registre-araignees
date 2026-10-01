@@ -50,7 +50,8 @@ function render() {
   const q = $("#search").value.trim().toLowerCase();
   const filtered = rows.filter((x) =>
     (x.nom || "").toLowerCase().includes(q) ||
-    (x.emplacement || "").toLowerCase().includes(q)
+    (x.emplacement || "").toLowerCase().includes(q) ||
+    (x.observation || "").toLowerCase().includes(q)
   );
 
   gallery.innerHTML = "";
@@ -106,6 +107,12 @@ function render() {
 
     content.append(name, label, place);
 
+    const observationBtn = document.createElement("button");
+    observationBtn.className = "light observation-btn";
+    observationBtn.textContent = "Voir les observations";
+    observationBtn.onclick = () => openObservation(item);
+    content.appendChild(observationBtn);
+
     if (session) {
       const actions = document.createElement("div");
       actions.className = "actions";
@@ -146,6 +153,7 @@ function openEdit(item = null) {
     currentPhotoPath = item.photo_path || null;
     $("#nom").value = item.nom;
     $("#emplacement").value = item.emplacement;
+    $("#observation").value = item.observation || "";
     $("#editTitle").textContent = "Modifier l’araignée";
 
     if (currentPhotoPath) {
@@ -158,6 +166,14 @@ function openEdit(item = null) {
   }
 
   $("#editDialog").showModal();
+}
+
+function openObservation(item) {
+  $("#observationTitle").textContent = item.nom;
+  $("#observationPlace").textContent = "📍 " + item.emplacement;
+  $("#observationText").textContent =
+    (item.observation || "").trim() || "Aucune observation pour le moment.";
+  $("#observationDialog").showModal();
 }
 
 function safeFileName(name) {
@@ -196,6 +212,7 @@ $("#editForm").addEventListener("submit", async (e) => {
     const payload = {
       nom: $("#nom").value.trim(),
       emplacement: $("#emplacement").value.trim(),
+      observation: $("#observation").value.trim() || null,
       photo_path: photoPath,
     };
 
